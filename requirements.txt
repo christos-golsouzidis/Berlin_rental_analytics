@@ -1,0 +1,10 @@
+dbt-duckdb
+dbt-core
+duckdb
+polars
+streamlit
+plotly
+prefect
+podman-compose
+requests
+
