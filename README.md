@@ -299,7 +299,13 @@ if __name__ == "__main__":
     )
 ```
 
-The end result: data visualization depicted on dashboards on the web leveraging streamlit:
+**Note:**  
+To reproduce the pipeline for debugging / testing comment the part `rental_pipeline.deploy(...)`, uncomment `rental_pipeline.serve(...)` and run it with:
+``` bash
+uv run pipeline_prefect.py
+```
+
+The end result: data visualizations displayed on web-based dashboards built with Streamlit.
 
 ```python
 import streamlit as st
