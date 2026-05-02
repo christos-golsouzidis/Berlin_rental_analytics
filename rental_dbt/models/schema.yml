@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: rental_data
+    meta:
+      external_location: "../rental_data/silver/*/*.parquet"
+    tables:
+      - name: properties
+        description: "Rental properties data"
+
+models:
+  - name: rent_trend
+    description: "Warm rent trend over time"
+    
+  - name: nb_rent_ranking
+    description: "Neighborhoods ranked by warm rent"
+    
+  - name: nb_listings
+    description: "Number of properties per neighborhood"
+    
+  - name: furnished_impact
+    description: "Average warm rent increase for furnished properties"
+    
+  - name: furnished_percentage
+    description: "Percentage of furnished apartments"

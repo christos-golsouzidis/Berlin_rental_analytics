@@ -29,7 +29,7 @@ services:
     volumes:
       - ./rental_data:/app/rental_data
       - ./rental_dbt:/app/rental_dbt
-      - ./.dbt:/app/.dbt:ro
+      - ./.dbt:/app/.dbt:ro # read-only flag
     command: >
       sh -c "
       echo 'Waiting for Prefect server...' &&
@@ -38,7 +38,8 @@ services:
       prefect deploy --name rental-pipeline
       "
     depends_on:
-      - prefect-server
+      prefect-server:
+        condition: service_started
     restart: "no"          # runs once and exits
 
   # WORKER: will wait for init to complete (by retrying until pool exists)

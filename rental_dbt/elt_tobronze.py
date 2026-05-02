@@ -3,7 +3,7 @@ import sys
 import requests
 import json
 import os
-
+from datetime import datetime, timedelta
 
 def extract_props(created_at: str, directory: str = ".") -> bool:
     '''Extract property data from the API of ACME for a specific date. The data will be saved in

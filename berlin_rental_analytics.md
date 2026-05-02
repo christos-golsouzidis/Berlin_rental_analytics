@@ -40,8 +40,9 @@ The pipeline extracts data from external sources. Here, the data are provided by
 
 #### 3.2.1 Bronze Layer (Json)
 
-- raw immutable data
+- storage of raw immutable data
 - saved as extracted to `bronze/` with no transformations involved preverving original data
+- extracts the data of the previous day from the API
 
 The code in `elt_bronze.py`:  
 

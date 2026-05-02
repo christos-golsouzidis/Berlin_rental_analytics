@@ -9,11 +9,11 @@ This data engineering project is the development of an ELT pipeline regarding re
 
 ### 1.2 Process
 
-The pipeline extracts data from external sources. Here, the data are provided by the fictional company ACME through its API, and through transformations we will generate dashboards for getting some insights. The pipeline is fully automated leveraging an orchestration flow through sceduling tasks.
+The pipeline extracts data from external sources. Here, the data are provided by the fictional company ACME through its API, and through transformations we will generate dashboards for getting some insights. The pipeline is fully automated leveraging an orchestration flow through sceduling tasks.  
 
 ## 2. Architecture  
 
-![elt_pipeline](/berlin_rental_analytics/elt_pipeline.png)
+![elt_pipeline](/elt_pipeline.png)
 
 ## 3. Technical details
 
@@ -360,13 +360,39 @@ if __name__ == "__main__":
     main()
 ```
 
-## 4. Future additions
+## 4. Setup
+
+1. clone the project.
+1. go to `acme/` and run the ACME API by running:
+    ``` bash
+    podman-compose up -d
+    ```
+    you should see now that the API runs on `localhost:12345`
+    if by giving to the terminal:
+    ``` bash
+    curl http://localhost:12345/api/properties/2026-01-01
+    ```
+    you should see a json response.  
+    **Note:**  
+    For generating a large dataset run the `cachup.py` script. Give the start and the end date of your choice in string isoformat `YYYY-MM-DD` and the path to the `bronze/` directory.  
+    E.g.:  
+    ```bash
+    uv run catchup.py 2022-01-01 2026-04-01 rental_data/bronze
+    ```
+1. on the main project directory run `podman-compose up`.
+you should now see that all services run automatically. The pipeline is sceduled to run once in a day at 02:00.
+1. Navigate to `localhost:8501` to view your dashboard analytics.
+You should see something similar to this output:
+
+![elt_pipeline](/berlin_rental_analytics.png)
+
+## 5. Future additions
 
 - Addition of unit tests
 - Implementation of rerunning the pipeline on failure with exponential decay
 - Development of messaging about the pipeline status
 
-## 5. License
+## 6. License
 
 No license, developed for demonstration purposes only.
 

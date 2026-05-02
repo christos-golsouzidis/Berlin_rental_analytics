@@ -8,8 +8,9 @@ wheels/
 
 # Virtual environments
 .venv
+.env
 
 # Data
 rental_data/
-rental_dbt/
 
+berlin_rental_analytics.md
