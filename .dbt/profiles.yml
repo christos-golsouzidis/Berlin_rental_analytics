@@ -1,0 +1,14 @@
+
+rental_dbt:
+  outputs:
+    dev:
+      type: duckdb
+      path: ../rental_data/gold/dev.duckdb
+      threads: 1
+
+    prod:
+      type: duckdb
+      path: ../rental_data/gold/prod.duckdb
+      threads: 4
+
+  target: dev
